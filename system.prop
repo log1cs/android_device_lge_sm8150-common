@@ -49,9 +49,6 @@ ro.netflix.bsp_rev=Q855-16947-1
 # NFC
 ro.nfc.port=I2C
 
-# Perf
-ro.vendor.qti.sys.fw.bg_apps_limit=64
-
 # Processor Model
 ro.processor.model=SM8150
 
