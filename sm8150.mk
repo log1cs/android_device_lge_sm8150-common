@@ -200,7 +200,7 @@ endif
 
 # FM packages
 PRODUCT_PACKAGES += \
-	FM2 \
+    FM2 \
     libqcomfm_jni \
     qcom.fmradio
 
@@ -436,7 +436,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qti.chg_policy.sh \
     init.qti.dcvs.sh \
-    init.qti.fm.sh
 
 PRODUCT_PACKAGES += \
     init.lge.display.rc \
@@ -453,7 +452,6 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.qti.fm.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     init.time_daemon.rc \
