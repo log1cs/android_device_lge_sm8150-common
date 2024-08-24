@@ -75,8 +75,5 @@ persist.vendor.ssr.restart_level=ALL_ENABLE
 debug.media.transcoding.codec_max_operating_rate_720P=240
 debug.media.transcoding.codec_max_operating_rate_1080P=120
 
-# Vendor
-ro.vendor.qti.va_aosp.support=1
-
 # Wifi
 config.disable_rtt=true
