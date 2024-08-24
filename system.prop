@@ -1,6 +1,5 @@
 # Audio
 audio.deep_buffer.media=true
-tunnel.audio.encode=true
 
 # Bluetooth
 persist.vendor.bt.a2dp.aac_whitelist=false
@@ -25,12 +24,6 @@ persist.sys.fuse.passthrough.enable=true
 # GMS
 ro.com.google.clientidbase.ms=android-lge-rev1
 
-# GPS
-persist.vendor.overlay.izat.optin=rro
-
-# CoreSight STM
-persist.debug.coresight.config=stm-events
-
 # IMS
 persist.vendor.ims.disableADBLogs=1
 persist.vendor.ims.disableIMSLogs=1
@@ -40,7 +33,6 @@ persist.vendor.radio.report_codec=1
 persist.vendor.radio.vdp_on_ims_cap=1
 
 # Media
-av.offload.enable=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 #Netflix custom property
@@ -71,6 +63,3 @@ persist.vendor.ssr.restart_level=ALL_ENABLE
 # Transcoding related property.
 debug.media.transcoding.codec_max_operating_rate_720P=240
 debug.media.transcoding.codec_max_operating_rate_1080P=120
-
-# Wifi
-config.disable_rtt=true
