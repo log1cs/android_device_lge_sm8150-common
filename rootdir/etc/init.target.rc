@@ -187,15 +187,6 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
 #   group system wakelock
 #   disabled
 
-service vendor.mdm_helper /vendor/bin/mdm_helper
-    class core
-    group system wakelock
-    disabled
-
-service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
-    class main
-    oneshot
-
 # LGE disable cnss_diag for one time starting
 #on property:vold.decrypt=trigger_restart_framework
 #    start cnss_diag
