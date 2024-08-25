@@ -1,0 +1,1965 @@
+#
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2011-2012, LG Electronics Inc. All rights reserved.
+#
+
+on init
+    # wmc_drv
+    insmod vendor/lib/modules/wmc_drv.ko
+
+on boot
+    # APN backup
+    mkdir /mnt/vendor/persist-lg/lgdata 0775 radio radio
+
+    ## LGE panel features
+	# General panel features
+	chown system system /sys/class/panel/panel-0/drs/freeze_state_hal
+	chmod 664 /sys/class/panel/panel-0/drs/freeze_state_hal
+	chown system system /sys/class/panel/panel-1/drs/freeze_state_hal
+	chmod 664 /sys/class/panel/panel-1/drs/freeze_state_hal
+	chown system system /sys/class/panel/drs/freeze_state_hal
+	chmod 664 /sys/class/panel/drs/freeze_state_hal
+	chown system system /sys/class/graphics/fb0/freeze_state_hal
+	chmod 664 /sys/class/graphics/fb0/freeze_state_hal
+	chown system system /sys/class/panel/freeze_state_hal
+	chmod 664 /sys/class/panel/freeze_state_hal
+
+	# Panel brigntness features
+	chown system system /sys/class/backlight/panel0-backlight/brightness
+	chmod 664 /sys/class/backlight/panel0-backlight/brightness
+	chown system system /sys/class/backlight/panel0-backlight/max_brightness
+	chmod 664 /sys/class/backlight/panel0-backlight/max_brightness
+	chown system system /sys/class/backlight/panel0-backlight-ex/brightness
+	chmod 664 /sys/class/backlight/panel0-backlight-ex/brightness
+	chown system system /sys/class/backlight/panel0-backlight-cover/brightness
+	chmod 664 /sys/class/backlight/panel0-backlight-cover/brightness
+	chown system system /sys/class/backlight/panel0-backlight-ex/max_brightness
+	chmod 664 /sys/class/backlight/panel0-backlight-ex/max_brightness
+
+	chown system system /sys/class/backlight/panel1-backlight/brightness
+	chmod 664 /sys/class/backlight/panel1-backlight/brightness
+	chown system system /sys/class/backlight/panel1-backlight/max_brightness
+	chmod 664 /sys/class/backlight/panel1-backlight/max_brightness
+	chown system system /sys/class/backlight/panel1-backlight-ex/brightness
+	chmod 664 /sys/class/backlight/panel1-backlight-ex/brightness
+	chown system system /sys/class/backlight/panel1-backlight-cover/brightness
+	chmod 664 /sys/class/backlight/panel1-backlight-cover/brightness
+	chown system system /sys/class/backlight/panel1-backlight-ex/max_brightness
+	chmod 664 /sys/class/backlight/panel1-backlight-ex/max_brightness
+
+	chown system system /sys/class/panel/panel-0/brightness/hl_mode
+	chmod 664 /sys/class/panel/panel-0/brightness/hl_mode
+	chown system system /sys/class/panel/panel-0/brightness/br_offset
+	chmod 664 /sys/class/panel/panel-0/brightness/br_offset
+	chown system system /sys/class/panel/panel-0/brightness/irc_brighter
+	chmod 664 /sys/class/panel/panel-0/brightness/irc_brighter
+	chown system system /sys/class/panel/panel-0/brightness/irc_support
+	chmod 444 /sys/class/panel/panel-0/brightness/irc_support
+	chown system system /sys/class/panel/panel-0/brightness/brightness_table
+	chmod 664 /sys/class/panel/panel-0/brightness/brightness_table
+	chown system system /sys/class/panel/panel-0/brightness/fp_lhbm
+	chmod 664 /sys/class/panel/panel-0/brightness/fp_lhbm
+	chown system system /sys/class/panel/panel-0/brightness/is_fp_hbm_mode
+	chmod 444 /sys/class/panel/panel-0/brightness/is_fp_hbm_mode
+	chown system system /sys/class/panel/panel-0/brightness/tc_perf
+	chmod 664 /sys/class/panel/panel-0/brightness/tc_perf
+
+	chown system system /sys/class/panel/panel-1/brightness/hl_mode
+	chmod 664 /sys/class/panel/panel-1/brightness/hl_mode
+	chown system system /sys/class/panel/panel-1/brightness/br_offset
+	chmod 664 /sys/class/panel/panel-1/brightness/br_offset
+	chown system system /sys/class/panel/panel-1/brightness/irc_brighter
+	chmod 664 /sys/class/panel/panel-1/brightness/irc_brighter
+	chown system system /sys/class/panel/panel-1/brightness/irc_support
+	chmod 444 /sys/class/panel/panel-1/brightness/irc_support
+	chown system system /sys/class/panel/panel-1/brightness/brightness_table
+	chmod 664 /sys/class/panel/panel-1/brightness/brightness_table
+	chown system system /sys/class/panel/panel-1/brightness/fp_lhbm
+	chmod 664 /sys/class/panel/panel-1/brightness/fp_lhbm
+	chown system system /sys/class/panel/panel-1/brightness/is_fp_hbm_mode
+	chmod 444 /sys/class/panel/panel-1/brightness/is_fp_hbm_mode
+	chown system system /sys/class/panel/panel-1/brightness/tc_perf
+	chmod 664 /sys/class/panel/panel-1/brightness/tc_perf
+
+	chown system system /sys/class/panel/brightness/hl_mode
+	chmod 664 /sys/class/panel/brightness/hl_mode
+	chown system system /sys/class/panel/brightness/br_offset
+	chmod 664 /sys/class/panel/brightness/br_offset
+	chown system system /sys/class/panel/brightness/irc_brighter
+	chmod 664 /sys/class/panel/brightness/irc_brighter
+	chown system system /sys/class/panel/brightness/irc_support
+	chmod 444 /sys/class/panel/brightness/irc_support
+	chown system system /sys/class/panel/brightness/brightness_table
+	chmod 664 /sys/class/panel/brightness/brightness_table
+	chown system system /sys/class/panel/brightness/fp_lhbm
+	chmod 664 /sys/class/panel/brightness/fp_lhbm
+	chown system system /sys/class/panel/brightness/is_fp_hbm_mode
+	chmod 444 /sys/class/panel/brightness/is_fp_hbm_mode
+	chown system system /sys/class/panel/brightness/tc_perf
+	chmod 664 /sys/class/panel/brightness/tc_perf
+
+	# Panel AoD features
+	chown system system /sys/class/panel/panel-0/aod/area
+	chmod 664 /sys/class/panel/panel-0/aod/area
+	chown system system /sys/class/panel/panel-0/aod/power_mode
+	chmod 664 /sys/class/panel/panel-0/aod/power_mode
+
+	chown system system /sys/class/panel/panel-1/aod/area
+	chmod 664 /sys/class/panel/panel-1/aod/area
+	chown system system /sys/class/panel/panel-1/aod/power_mode
+	chmod 664 /sys/class/panel/panel-1/aod/power_mode
+
+	chown system system /sys/class/panel/aod/area
+	chmod 664 /sys/class/panel/aod/area
+	chown system system /sys/class/panel/aod/power_mode
+	chmod 664 /sys/class/panel/aod/power_mode
+
+	# Panel image tuning features
+	chown system system /sys/class/panel/panel-0/img_tune/rgb_tune
+	chmod 664 /sys/class/panel/panel-0/img_tune/rgb_tune
+	chown system system /sys/class/panel/panel-0/img_tune/screen_tune
+	chmod 664 /sys/class/panel/panel-0/img_tune/screen_tune
+	chown system system /sys/class/panel/panel-0/img_tune/screen_mode
+	chmod 664 /sys/class/panel/panel-0/img_tune/screen_mode
+
+	chown system system /sys/class/panel/panel-1/img_tune/rgb_tune
+	chmod 664 /sys/class/panel/panel-1/img_tune/rgb_tune
+	chown system system /sys/class/panel/panel-1/img_tune/screen_tune
+	chmod 664 /sys/class/panel/panel-1/img_tune/screen_tune
+	chown system system /sys/class/panel/panel-1/img_tune/screen_mode
+	chmod 664 /sys/class/panel/panel-1/img_tune/screen_mode
+
+	chown system system /sys/class/panel/img_tune/rgb_tune
+	chmod 664 /sys/class/panel/img_tune/rgb_tune
+	chown system system /sys/class/panel/img_tune/screen_tune
+	chmod 664 /sys/class/panel/img_tune/screen_tune
+	chown system system /sys/class/panel/img_tune/screen_mode
+	chmod 664 /sys/class/panel/img_tune/screen_mode
+
+	chown system system /sys/class/panel_cover/img_tune/rgb_tune
+	chmod 664 /sys/class/panel_cover/img_tune/rgb_tune
+	chown system system /sys/class/panel_cover/img_tune/screen_tune
+	chmod 664 /sys/class/panel_cover/img_tune/screen_tune
+	chown system system /sys/class/panel_cover/img_tune/screen_mode
+	chmod 664 /sys/class/panel_cover/img_tune/screen_mode
+
+	chown system system /sys/class/panel/panel-0/img_tune/comfort_view
+	chmod 664 /sys/class/panel/panel-0/img_tune/comfort_view
+	chown system system /sys/class/panel/panel-0/img_tune/video_enhancement
+	chmod 664 /sys/class/panel/panel-0/img_tune/video_enhancement
+	chown system system /sys/class/panel/panel-0/img_tune/vr_low_persist
+	chmod 664 /sys/class/panel/panel-0/img_tune/vr_low_persist
+	chown system system /sys/class/panel/panel-0/img_tune/hdr_mode
+	chmod 664 /sys/class/panel/panel-0/img_tune/hdr_mode
+	chown system system /sys/class/panel/panel-0/img_tune/sharpness
+	chmod 664 /sys/class/panel/panel-0/img_tune/sharpness
+	chown system system /sys/class/panel/panel-0/img_tune/true_view
+	chmod 664 /sys/class/panel/panel-0/img_tune/true_view
+	chown system system /sys/class/panel/panel-0/img_tune/damping_mode
+	chmod 664 /sys/class/panel/panel-0/img_tune/damping_mode
+	chown system system /sys/class/panel/panel-0/img_tune/image_enhance_set
+	chmod 664 /sys/class/panel/panel-0/img_tune/image_enhance_set
+	chown system system /sys/class/panel/panel-0/img_tune/mplus_mode
+	chmod 664 /sys/class/panel/panel-0/img_tune/mplus_mode
+	chown system system /sys/class/panel/panel-0/img_tune/mplus_hd
+	chmod 664 /sys/class/panel/panel-0/img_tune/mplus_hd
+	chown system system /sys/class/panel/panel-0/img_tune/mplus_max
+	chmod 664 /sys/class/panel/panel-0/img_tune/mplus_max
+	chown system system /sys/class/panel/panel-0/img_tune/ecc_status
+	chmod 664 /sys/class/panel/panel-0/img_tune/ecc_status
+	chown system system /sys/class/panel/panel-0/img_tune/daylight_mode
+	chmod 664 /sys/class/panel/panel-0/img_tune/daylight_mode
+	chown system system /sys/class/panel/panel-0/img_tune/fps_status
+	chmod 444 /sys/class/panel/panel-0/img_tune/fps_status
+
+	chown system system /sys/class/panel/panel-1/img_tune/comfort_view
+	chmod 664 /sys/class/panel/panel-1/img_tune/comfort_view
+	chown system system /sys/class/panel/panel-1/img_tune/video_enhancement
+	chmod 664 /sys/class/panel/panel-1/img_tune/video_enhancement
+	chown system system /sys/class/panel/panel-1/img_tune/vr_low_persist
+	chmod 664 /sys/class/panel/panel-1/img_tune/vr_low_persist
+	chown system system /sys/class/panel/panel-1/img_tune/hdr_mode
+	chmod 664 /sys/class/panel/panel-1/img_tune/hdr_mode
+	chown system system /sys/class/panel/panel-1/img_tune/sharpness
+	chmod 664 /sys/class/panel/panel-1/img_tune/sharpness
+	chown system system /sys/class/panel/panel-1/img_tune/true_view
+	chmod 664 /sys/class/panel/panel-1/img_tune/true_view
+	chown system system /sys/class/panel/panel-1/img_tune/damping_mode
+	chmod 664 /sys/class/panel/panel-1/img_tune/damping_mode
+	chown system system /sys/class/panel/panel-1/img_tune/image_enhance_set
+	chmod 664 /sys/class/panel/panel-1/img_tune/image_enhance_set
+	chown system system /sys/class/panel/panel-1/img_tune/mplus_mode
+	chmod 664 /sys/class/panel/panel-1/img_tune/mplus_mode
+	chown system system /sys/class/panel/panel-1/img_tune/mplus_hd
+	chmod 664 /sys/class/panel/panel-1/img_tune/mplus_hd
+	chown system system /sys/class/panel/panel-1/img_tune/mplus_max
+	chmod 664 /sys/class/panel/panel-1/img_tune/mplus_max
+	chown system system /sys/class/panel/panel-1/img_tune/ecc_status
+	chmod 664 /sys/class/panel/panel-1/img_tune/ecc_status
+	chown system system /sys/class/panel/panel-1/img_tune/daylight_mode
+	chmod 664 /sys/class/panel/panel-1/img_tune/daylight_mode
+	chown system system /sys/class/panel/panel-1/img_tune/fps_status
+	chmod 444 /sys/class/panel/panel-1/img_tune/fps_status
+
+	chown system system /sys/class/panel/img_tune/comfort_view
+	chmod 664 /sys/class/panel/img_tune/comfort_view
+	chown system system /sys/class/panel/img_tune/video_enhancement
+	chmod 664 /sys/class/panel/img_tune/video_enhancement
+	chown system system /sys/class/panel/img_tune/vr_low_persist
+	chmod 664 /sys/class/panel/img_tune/vr_low_persist
+	chown system system /sys/class/panel/img_tune/hdr_mode
+	chmod 664 /sys/class/panel/img_tune/hdr_mode
+	chown system system /sys/class/panel/img_tune/sharpness
+	chmod 664 /sys/class/panel/img_tune/sharpness
+	chown system system /sys/class/panel/img_tune/true_view
+	chmod 664 /sys/class/panel/img_tune/true_view
+	chown system system /sys/class/panel/img_tune/damping_mode
+	chmod 664 /sys/class/panel/img_tune/damping_mode
+	chown system system /sys/class/panel/img_tune/image_enhance_set
+	chmod 664 /sys/class/panel/img_tune/image_enhance_set
+	chown system system /sys/class/panel/img_tune/mplus_mode
+	chmod 664 /sys/class/panel/img_tune/mplus_mode
+	chown system system /sys/class/panel/img_tune/mplus_hd
+	chmod 664 /sys/class/panel/img_tune/mplus_hd
+	chown system system /sys/class/panel/img_tune/mplus_max
+	chmod 664 /sys/class/panel/img_tune/mplus_max
+	chown system system /sys/class/panel/img_tune/ecc_status
+	chmod 664 /sys/class/panel/img_tune/ecc_status
+	chown system system /sys/class/panel/img_tune/daylight_mode
+	chmod 664 /sys/class/panel/img_tune/daylight_mode
+	chown system system /sys/class/panel/img_tune/fps_status
+	chmod 444 /sys/class/panel/img_tune/fps_status
+
+	# Panel accessories features
+	chown system system /sys/class/smartcover/smartcover/state
+	chmod 664 /sys/class/smartcover/smartcover/state
+	chown system system /sys/class/switch/smartcover/state
+	chmod 664 /sys/class/switch/smartcover/state
+	chown system system /sys/class/stylus/pen_state/state
+	chmod 664 /sys/class/stylus/pen_state/state
+	chown system system /sys/class/switch/pen_state/state
+	chmod 664 /sys/class/switch/pen_state/state
+	chown system system /sys/class/switch/kickstand/state
+	chmod 664 /sys/class/switch/kickstand/state
+	chown system system /sys/class/switch/folderstatus/state
+	chmod 664 /sys/class/switch/folderstatus/state
+	chown system system /sys/class/smartcover/nfccover/state
+	chmod 664 /sys/class/smartcover/nfccover/state
+	chown system system /sys/class/switch/nfccover/state
+	chmod 664 /sys/class/switch/nfccover/state
+	chown system system /sys/class/smartcover/coverdisplay/state
+	chmod 664 /sys/class/smartcover/coverdisplay/state
+	chown system system /sys/class/smartcover/lt_fail/state
+	chmod 664 /sys/class/smartcover/lt_fail/state
+	chown system system /sys/class/panel_cover/cover_ctrl/cover_button
+	chmod 664 /sys/class/panel_cover/cover_ctrl/cover_button
+	chown system system /sys/class/panel_cover/cover_ctrl/cover_led
+	chmod 664 /sys/class/panel_cover/cover_ctrl/cover_led
+	chown system system /sys/class/extcon/extcon5/state
+	chmod 664 /sys/class/extcon/extcon5/state
+	chown system system /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
+	chmod 664 /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
+
+	# LGE Cover features
+	chown system system /sys/devices/platform/soc/ae90000.qcom,dp_display/extcon/extcon5/state
+	chmod 664 /sys/devices/platform/soc/ae90000.qcom,dp_display/extcon/extcon5/state
+
+	# Display factory features
+	chown system system /sys/class/panel/panel-0/factory/mfts_auto_touch_test_mode
+	chmod 664 /sys/class/panel/panel-0/factory/mfts_auto_touch_test_mode
+	chown system system /sys/class/panel/panel-1/factory/mfts_auto_touch_test_mode
+	chmod 664 /sys/class/panel/panel-1/factory/mfts_auto_touch_test_mode
+	chown system system /sys/class/panel/factory/mfts_auto_touch_test_mode
+	chmod 664 /sys/class/panel/factory/mfts_auto_touch_test_mode
+
+    # Fingerprint
+    chown system system /dev/goodix_fp
+    chmod 0644 /dev/goodix_fp
+    chown system system /dev/esfp0
+    chmod 0644 /dev/esfp0
+
+	# LED
+	chown system system /sys/class/cover_led/rgb_led/led_pattern
+	chmod 664 /sys/class/cover_led/rgb_led/led_pattern
+	chown system system /sys/class/cover_led/rgb_led/led_blink
+	chmod 664 /sys/class/cover_led/rgb_led/led_blink
+	chown system system /sys/class/cover_led/rgb_led/pattern_onoff
+	chmod 664 /sys/class/cover_led/rgb_led/pattern_onoff
+	chown system system /sys/class/cover_led/rgb_led/led_init
+	chmod 664 /sys/class/cover_led/rgb_led/led_init
+	chown system system /sys/class/leds/CR/brightness
+	chmod 664 /sys/class/leds/CR/brightness
+	chown system system /sys/class/leds/CG/brightness
+	chmod 664 /sys/class/leds/CG/brightness
+	chown system system /sys/class/leds/CB/brightness
+	chmod 664 /sys/class/leds/CB/brightness
+	chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/blink_patterns
+	chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/blink_patterns
+	chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/input_patterns
+	chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/input_patterns
+	chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
+	chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
+	chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/setting
+	chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/setting
+	write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 1
+
+    # pm debug mask enable(clock/resume irq)
+    write /sys/kernel/debug/clk/debug_suspend 1
+    write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
+   
+	# Touch driver
+	chown system system /sys/devices/virtual/input/lge_touch/incoming_call
+	chmod 664 /sys/devices/virtual/input/lge_touch/incoming_call
+	chown system system /sys/devices/virtual/input/lge_touch/ime_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/ime_status
+	chown system system /sys/devices/virtual/input/lge_touch/pen_support
+	chmod 664 /sys/devices/virtual/input/lge_touch/pen_support
+	chown system system /sys/devices/virtual/input/lge_touch/glove_support
+	chmod 664 /sys/devices/virtual/input/lge_touch/glove_support
+	chown system system /sys/devices/virtual/input/lge_touch/keyguard
+	chmod 664 /sys/devices/virtual/input/lge_touch/keyguard
+	chown system system /sys/devices/virtual/input/lge_touch/debug_tool
+	chmod 664 /sys/devices/virtual/input/lge_touch/debug_tool
+	chown system system /sys/devices/virtual/input/lge_touch/debug_option
+	chmod 664 /sys/devices/virtual/input/lge_touch/debug_option
+	chown system system /sys/devices/virtual/input/lge_touch/vr_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/vr_status
+	chown system system /sys/devices/virtual/input/lge_touch/autotune
+	chmod 664 /sys/devices/virtual/input/lge_touch/autotune
+	chown system system /sys/devices/virtual/input/lge_touch/grip_suppression
+	chmod 664 /sys/devices/virtual/input/lge_touch/grip_suppression
+	chown system system /sys/devices/virtual/input/lge_touch/app_data
+	chmod 664 /sys/devices/virtual/input/lge_touch/app_data
+	chown system system /sys/devices/virtual/input/lge_touch/film_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/film_status
+	chown system system /sys/devices/virtual/input/lge_touch/active_pen_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/active_pen_status
+	chown system system /sys/devices/virtual/input/lge_touch/aes_mode
+	chmod 664 /sys/devices/virtual/input/lge_touch/aes_mode
+	chown system system /sys/module/usbhid/parameters/aes_mode
+	chmod 664 /sys/module/usbhid/parameters/aes_mode
+	chown system system /sys/devices/virtual/input/lge_touch/ds_update_state
+	chmod 664 /sys/devices/virtual/input/lge_touch/ds_update_state
+	chown system system /sys/devices/virtual/input/lge_touch/touch_dex_mode
+	chmod 664 /sys/devices/virtual/input/lge_touch/touch_dex_mode
+	chown system system /sys/devices/virtual/input/lge_sub_touch/touch_dex_mode
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/touch_dex_mode
+	chown system system /sys/devices/virtual/input/lge_touch/app_fw_upgrade
+	chmod 664 /sys/devices/virtual/input/lge_touch/app_fw_upgrade
+	chown system system /sys/devices/virtual/input/lge_touch/rawdata
+	chmod 664 /sys/devices/virtual/input/lge_touch/rawdata
+	chown system system /sys/devices/virtual/input/lge_touch/delta
+	chmod 664 /sys/devices/virtual/input/lge_touch/delta
+	chown system system /sys/devices/virtual/input/lge_touch/jitter
+	chmod 664 /sys/devices/virtual/input/lge_touch/jitter
+	chown system system /sys/devices/virtual/input/lge_touch/rotation
+	chmod 664 /sys/devices/virtual/input/lge_touch/rotation
+	chown system system /sys/devices/virtual/input/lge_touch/grip_area
+	chmod 664 /sys/devices/virtual/input/lge_touch/grip_area
+	chown system system /sys/devices/virtual/input/lge_touch/reg_ctrl
+	chmod 664 /sys/devices/virtual/input/lge_touch/reg_ctrl
+	chown system system /sys/devices/virtual/input/lge_touch/touch_common_control
+	chmod 664 /sys/devices/virtual/input/lge_touch/touch_common_control
+
+	# Sub-touch driver
+	chown system system /sys/devices/virtual/input/lge_sub_touch/incoming_call
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/incoming_call
+	chown system system /sys/devices/virtual/input/lge_sub_touch/ime_status
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/ime_status
+	chown system system /sys/devices/virtual/input/lge_sub_touch/keyguard
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/keyguard
+	chown system system /sys/devices/virtual/input/lge_sub_touch/debug_tool
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/debug_tool
+	chown system system /sys/devices/virtual/input/lge_sub_touch/debug_option
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/debug_option
+	chown system system /sys/devices/virtual/input/lge_sub_touch/grip_suppression
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/grip_suppression
+	chown system system /sys/devices/virtual/input/lge_sub_touch/app_data
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/app_data
+	chown system system /sys/devices/virtual/input/lge_sub_touch/film_status
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/film_status
+	chown system system /sys/devices/virtual/input/lge_sub_touch/touch_dex_mode_pad
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/touch_dex_mode_pad
+
+	# Sub Touch
+	chown system system /sys/devices/virtual/input/lge_sub_touch/lpwg_data
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/lpwg_data
+	chown system system /sys/devices/virtual/input/lge_sub_touch/lpwg_notify
+	chmod 664 /sys/devices/virtual/input/lge_sub_touch/lpwg_notify
+
+	# Knock-on
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chown system system /sys/devices/virtual/input/lge_touch/q_sensitivity
+	chmod 664 /sys/devices/virtual/input/lge_touch/q_sensitivity
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_enable
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_enable
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_pay_area
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_pay_area
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_tool
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_tool
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_abs
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_abs
+	chown system system /sys/devices/virtual/input/lge_touch/voice_button
+	chmod 664 /sys/devices/virtual/input/lge_touch/voice_button
+	chown system system /sys/devices/virtual/input/lge_touch/ai_pick
+	chmod 664 /sys/devices/virtual/input/lge_touch/ai_pick
+	chown system system /sys/devices/virtual/input/lge_touch/longpress
+	chmod 664 /sys/devices/virtual/input/lge_touch/longpress
+	chown system system /sys/devices/virtual/input/lge_touch/onetap
+	chmod 664 /sys/devices/virtual/input/lge_touch/onetap
+	chown system system /sys/devices/virtual/input/lge_touch/display_area_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/display_area_status
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_function_info
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_function_info
+	chown system system /sys/devices/virtual/input/lge_touch/flexible_display_info
+	chmod 664 /sys/devices/virtual/input/lge_touch/flexible_display_info
+	chown system system /sys/devices/virtual/input/lge_touch/flexible_display_info_update_frequency
+	chmod 664 /sys/devices/virtual/input/lge_touch/flexible_display_info_update_frequency
+
+	# Secure Touch
+	chown system system /sys/devices/virtual/input/lge_touch/secure_touch
+	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch
+	chown system system /sys/devices/virtual/input/lge_touch/secure_touch_enable
+	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch_enable
+	chown system system /sys/devices/virtual/input/lge_touch/secure_touch_devinfo
+	chmod 664 /sys/devices/virtual/input/lge_touch/secure_touch_devinfo
+
+	# CoverDisplay
+	chown system system /sys/devices/platform/soc/a80000.spi/spi_master/spi1/spi1.2/fw
+	chmod 664 /sys/devices/platform/soc/a80000.spi/spi_master/spi1/spi1.2/fw
+	chown system system /sys/devices/platform/soc/soc:gpio_keys/virtual_mcu_firmware_write
+	chmod 664 /sys/devices/platform/soc/soc:gpio_keys/virtual_mcu_firmware_write
+	chown system system /sys/devices/virtual/ice40_i2c/coverdisplay/FILE_ICE40_POLL
+	chmod 664 /sys/devices/virtual/ice40_i2c/coverdisplay/FILE_ICE40_POLL
+	chown system system /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
+	chmod 664 /sys/devices/platform/soc/soc:gpio_keys/cover_fw_update
+
+    # wmc_drv
+    chown system system /sys/class/lge_mme_bus/mme_bus_ctrl/boost
+    chmod 664 /sys/class/lge_mme_bus/mme_bus_ctrl/boost
+    chown system system /sys/class/lge_mme_bus/mme_bus_ctrl/boost_long_term
+    chmod 664 /sys/class/lge_mme_bus/mme_bus_ctrl/boost_long_term
+    chown system system /sys/class/lge_mme/mme_ctrl/mme_command
+    chmod 664 /sys/class/lge_mme/mme_ctrl/mme_command
+
+
+on post-fs-data
+    # Attestation provisoning
+    mkdir /data/vendor/km 0770 system system
+
+    # Encryption
+    mkdir /vendor/persist-lg/encryption 0771 system system
+
+    # Camera EEPROM
+    mkdir mnt/vendor/persist-lg/camera 0771 cameraserver radio
+
+    # Call duration
+    mkdir /mnt/vendor/persist-lg/callduration 0770 system radio
+    chown system /mnt/vendor/persist-lg/callduration
+    chmod 0770 /mnt/vendor/persist-lg/callduration
+
+    # Charge logo
+    mkdir /mnt/vendor/persist-lg/chargerlogo 0771 system system
+
+    # Fingerprint
+    mkdir /mnt/vendor/persist-lg/goodix 755 system system
+    mkdir /mnt/vendor/persist-lg/egis 0700 system system
+    mkdir /data/vendor/fingerprintdump 0775 system system
+
+    # Kill-Switch
+    #mkdir /vendor/persist-lg/mms 0770 system vendor_lgmms
+
+    # KDDI SIMLock Management
+    mkdir /vendor/persist-lg/cardinal 0770 system system
+
+    # MM proxy
+    mkdir /vendor/persist-lg/mmoprt 0771 system system
+
+    # NTCode listing
+    mkdir /data/app-system 0771 system system
+
+    # OTS
+    mkdir /data/vendor/ots 0775 system system
+
+    # Partitions (LG)
+    restorecon /mnt/vendor/persist-lg
+    restorecon_recursive /mnt/vendor/persist-lg
+    restorecon /mnt/vendor/sns
+    restorecon_recursive /mnt/vendor/sns
+    restorecon /mnt/vendor/mpt
+    restorecon_recursive /mnt/vendor/mpt
+    restorecon /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+    restorecon /cust
+    restorecon_recursive /cust
+    restorecon /mnt/vendor/eri
+    restorecon_recursive /mnt/vendor/eri
+    restorecon /mnt/vendor/ve
+    restorecon_recursive /mnt/vendor/ve
+    restorecon /mnt/vendor/OneSeg
+    restorecon_recursive /mnt/vendor/OneSeg
+    restorecon /dev/iwland
+    restorecon /data/preload
+    restorecon_recursive /data/preload
+    restorecon /mnt/vendor/power
+    restorecon_recursive /mnt/vendor/power
+    restorecon /mnt/vendor/absolute
+    restorecon_recursive /mnt/vendor/absolute
+    restorecon /mnt/vendor/qni
+    restorecon_recursive /mnt/vendor/qni
+    restorecon /mnt/vendor/power
+    restorecon_recursive /mnt/vendor/power
+    restorecon /sys/kernel/debug/tzdbg
+    restorecon_recursive /sys/kernel/debug/tzdbg
+
+    # Secureks
+    mkdir /vendor/persist-lg/secureks 0770 system system
+
+    # Sensors
+    mkdir /mnt/vendor/sns/sensors 0755 system system
+    mkdir /mnt/vendor/sns/sensors/registry 0755 system system
+    mkdir /mnt/vendor/sns/sensors/registry/registry 0755 system system
+
+    chown system system /sys/devices/virtual/input/lge_sar_rf/regreset
+    chown system system /sys/devices/virtual/input/lge_sar_rf/onoff
+    chown system system /sys/devices/virtual/input/lge_sar_rf/checkallnear
+    chown system system /sys/devices/virtual/input/lge_sar_rf/docalibration
+
+    chmod 644 /sys/devices/virtual/input/lge_sar_rf/regreset
+    chmod 644 /sys/devices/virtual/input/lge_sar_rf/onoff
+    chmod 644 /sys/devices/virtual/input/lge_sar_rf/checkallnear
+    chmod 644 /sys/devices/virtual/input/lge_sar_rf/docalibration
+
+    # STB
+    mkdir /vendor/persist-lg/stblvd 0771 system system
+    chmod 770 /vendor/persist-lg/stblvd/dkp
+    chmod 770 /vendor/persist-lg/stblvd/srmp
+
+    # SP MIRRORING
+    chmod 0660 /sys/class/graphics/fb0/sp_link_backlight_off
+    chown system system /sys/class/graphics/fb0/sp_link_backlight_off
+    chmod 0660 /sys/devices/virtual/input/lge_touch/sp_link_touch_off
+    chown system system /sys/devices/virtual/input/lge_touch/sp_link_touch_off
+
+    # Radio (rtnlastdate)
+    mkdir /vendor/persist-lg/rtnlastdate 0770 system radio
+
+    # RCT
+    rm /mnt/vendor/persist-lg/rct
+    rm /mnt/vendor/persist-lg/rct.cfg
+    mkdir /mnt/vendor/persist-lg/rct 0771 root root
+
+    # Thermal encryption
+    mkdir /mnt/vendor/persist-lg/thermal 0770 root system
+
+    # Touch
+    mkdir /data/vendor/touch 0771 system system
+
+    # Widevine
+    mkdir /mnt/vendor/persist-lg/widevine 0770 drm system
+    mkdir /mnt/vendor/persist-lg/firmware 0771 system system
+    exec_background - system system -- /vendor/bin/cpfirmware widevine /mnt/vendor/persist-lg/firmware
+
+    # wmc_drv
+    restorecon /sys/class/lge_mme_bus/mme_bus_ctrl/boost
+    restorecon /sys/class/lge_mme_bus/mme_bus_ctrl/boost_long_term
+    restorecon /sys/class/lge_mme/mme_ctrl/mme_command
+
+    # USB
+    write /sys/class/android_usb/android0/f_rndis/manufacturer LGE
+    write /sys/class/android_usb/android0/f_rndis/vendorID 1004
+    write /sys/class/android_usb/android0/f_rndis/wceis 1
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
+    write /sys/class/android_usb/android0/f_ffs/aliases adb
+    mount configfs none /config
+    mkdir /config/usb_gadget/g1 0755
+    mkdir /config/usb_gadget/g1/strings/0x409 0755
+    write /config/usb_gadget/g1/bcdUSB 0x0200
+    write /config/usb_gadget/g1/os_desc/use 1
+    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
+    write /config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.manufacturer}
+    write /config/usb_gadget/g1/strings/0x409/product ${ro.product.model}
+    mkdir /config/usb_gadget/g1/functions/mass_storage.0
+    mkdir /config/usb_gadget/g1/functions/mtp.gs0
+    mkdir /config/usb_gadget/g1/functions/ptp.gs1
+    mkdir /config/usb_gadget/g1/functions/accessory.gs2
+    mkdir /config/usb_gadget/g1/functions/audio_source.gs3
+    mkdir /config/usb_gadget/g1/functions/midi.gs5
+    mkdir /config/usb_gadget/g1/functions/hid.charge
+    mkdir /config/usb_gadget/g1/functions/acm.0
+    mkdir /config/usb_gadget/g1/functions/ffs.adb
+    mkdir /config/usb_gadget/g1/functions/ffs.diag
+    mkdir /config/usb_gadget/g1/functions/ffs.diag_mdm
+    mkdir /config/usb_gadget/g1/functions/ffs.diag_mdm2
+    mkdir /config/usb_gadget/g1/functions/diag.diag
+    mkdir /config/usb_gadget/g1/functions/diag.diag_mdm
+    mkdir /config/usb_gadget/g1/functions/diag.diag_mdm2
+    mkdir /config/usb_gadget/g1/functions/cser.dun.0
+    mkdir /config/usb_gadget/g1/functions/cser.nmea.1
+    mkdir /config/usb_gadget/g1/functions/cser.dun.2
+    mkdir /config/usb_gadget/g1/functions/gsi.rmnet
+    mkdir /config/usb_gadget/g1/functions/gsi.rndis
+    mkdir /config/usb_gadget/g1/functions/gsi.dpl
+    mkdir /config/usb_gadget/g1/functions/qdss.qdss
+    mkdir /config/usb_gadget/g1/functions/qdss.qdss_mdm
+    mkdir /config/usb_gadget/g1/functions/rndis_bam.rndis
+    mkdir /config/usb_gadget/g1/functions/rndis.rndis
+    mkdir /config/usb_gadget/g1/functions/rmnet_bam.rmnet
+    mkdir /config/usb_gadget/g1/functions/rmnet_bam.dpl
+    mkdir /config/usb_gadget/g1/functions/ncm.0
+    mkdir /config/usb_gadget/g1/functions/ccid.ccid
+    mkdir /config/usb_gadget/g1/functions/uac2.0
+    mkdir /config/usb_gadget/g1/functions/uvc.0
+    mkdir /config/usb_gadget/g1/configs/b.1 0755
+    mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0755
+    write /config/usb_gadget/g1/configs/b.1/MaxPower 900
+    write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
+    write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
+    write /config/usb_gadget/g1/functions/diag.diag/serial ${ro.serialno}
+    symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
+    mkdir /dev/usb-ffs 0775 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000,rmode=0770,fmode=0660
+    mkdir /dev/ffs-diag 0770 shell system
+    mount functionfs diag /dev/ffs-diag uid=2000,gid=1000,rmode=0770,fmode=0660,no_disconnect=1
+    mkdir /dev/ffs-diag-1 0770 shell system
+    mount functionfs diag_mdm /dev/ffs-diag-1 uid=2000,gid=1000,rmode=0770,fmode=0660,no_disconnect=1
+    mkdir /dev/ffs-diag-2 0770 shell system
+    mount functionfs diag_mdm2 /dev/ffs-diag-2 uid=2000,gid=1000,rmode=0770,fmode=0660,no_disconnect=1
+    setprop sys.usb.mtp.device_type 3
+    setprop vendor.lge.usb.controller ${sys.usb.controller}
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.sh ${persist.sys.usb.config}
+
+on boot && property:vendor.usb.use_ffs_mtp=1
+   mkdir /config/usb_gadget/g1/functions/ffs.mtp
+   mkdir /config/usb_gadget/g1/functions/ffs.ptp
+   mkdir /dev/usb-ffs/mtp 0770 mtp mtp
+   mount functionfs mtp /dev/usb-ffs/mtp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
+   mkdir /dev/usb-ffs/ptp 0770 mtp mtp
+   mount functionfs ptp /dev/usb-ffs/ptp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
+
+on post-fs
+    # LGE
+    mkdir /vendor/persist-lg/property 0771 system radio
+    mkdir /mnt/vendor/persist-lg/autosimlock 0770 system system
+    mkdir /vendor/persist-lg/poweron 0775 root root
+    mkdir /vendor/persist-lg/tmo 0771 radio radio
+
+    # U+ call forward
+    mkdir /mnt/vendor/persist-lg/callfw 0770 radio radio
+
+    # Keymaster
+    mkdir /mnt/vendor/persist-lg/keymaster 0770 system system
+
+    # Partitions (persist-lg)
+    chown root system /mnt/vendor/persist-lg
+    chmod 0771 /mnt/vendor/persist-lg
+    restorecon_recursive /mnt/vendor/persist-lg
+    mkdir /mnt/vendor/persist-lg/data 0700 system system
+    restorecon_recursive /mnt/vendor/persist-lg/data
+    mkdir /mnt/vendor/persist-lg/property 0771 system radio
+    write /mnt/vendor/persist-lg/cam_torch_brightness 0
+    chown system system /mnt/vendor/persist-lg/cam_torch_brightness
+    chmod 0664 /mnt/vendor/persist-lg/cam_torch_brightness
+
+    # Qfuse
+    write /sys/devices/platform/lge-qfprom/sec_read 0
+
+    # Use secure boot
+    verity_update_state
+
+    # Roaming
+    mkdir /mnt/vendor/persist-lg/roaming 0771 system radio
+
+## LGE USB changes
+service vendor.lge-usb-def-sh /vendor/bin/init.lge.usb.default.sh ${persist.sys.usb.config}
+    class core
+    user root
+    oneshot
+    disabled
+
+on property:persist.vendor.lge.usb.provisioned=1
+    start vendor.lge-usb-def-sh
+
+on property:vendor.lge.usb.persist.config=*
+    setprop persist.sys.usb.config ${vendor.lge.usb.persist.config}
+
+on property:vendor.lge.usb.config=*
+    setprop sys.usb.config ${vendor.lge.usb.config}
+
+on property:sys.usb.config=*
+    setprop vendor.lge.usb.state ${sys.usb.config}
+
+on boot && property:ro.boot.usbconfigfs=true
+    setprop sys.usb.configfs 1
+
+on property:vendor.usb.configfs=1 && property:sys.usb.configfs=0
+    setprop sys.usb.configfs 1
+
+## LGE USB Type-C changes
+# USB control changes
+on property:vendor.lge.usb.typec.control=auto
+    write /sys/class/dual_role_usb/otg_default/control ${vendor.lge.usb.typec.control}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.control}
+
+on property:vendor.lge.usb.typec.control=on
+    write /sys/class/dual_role_usb/otg_default/control ${vendor.lge.usb.typec.control}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.control}
+
+# USB mode changes
+on property:persist.vendor.lge.usb.typec.mode=fault
+    write /sys/class/dual_role_usb/otg_default/control on
+    write /sys/class/dual_role_usb/otg_default/mode fault
+    write /mnt/vendor/persist-lg/chargerlogo/moisture_detection 1
+    setprop vendor.lge.usb.typec.state ${persist.vendor.lge.usb.typec.mode}
+
+on property:persist.vendor.lge.usb.typec.mode=none
+    write /sys/class/dual_role_usb/otg_default/mode none
+    write /sys/class/dual_role_usb/otg_default/control auto
+    rm /mnt/vendor/persist-lg/chargerlogo/moisture_detection
+    setprop vendor.lge.usb.typec.state ${persist.vendor.lge.usb.typec.mode}
+    setprop persist.vendor.lge.usb.typec.mode unknown
+
+on property:vendor.lge.usb.typec.mode=fault
+    write /sys/class/dual_role_usb/otg_default/mode ${vendor.lge.usb.typec.mode}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.mode}
+
+on property:vendor.lge.usb.typec.mode=none
+    write /sys/class/dual_role_usb/otg_default/mode ${vendor.lge.usb.typec.mode}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.mode}
+
+# USB data role changes
+on property:vendor.lge.usb.typec.data_role=fault
+    write /sys/class/dual_role_usb/otg_default/data_role ${vendor.lge.usb.typec.data_role}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.data_role}
+
+on property:vendor.lge.usb.typec.data_role=none
+    write /sys/class/dual_role_usb/otg_default/data_role ${vendor.lge.usb.typec.data_role}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.data_role}
+
+# USB power role changes
+on property:vendor.lge.usb.typec.power_role=fault
+    write /sys/class/dual_role_usb/otg_default/power_role ${vendor.lge.usb.typec.power_role}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.power_role}
+
+on property:vendor.lge.usb.typec.power_role=none
+    write /sys/class/dual_role_usb/otg_default/power_role ${vendor.lge.usb.typec.power_role}
+    setprop vendor.lge.usb.typec.state ${vendor.lge.usb.typec.power_role}
+
+# USB moisture detection
+on property:persist.vendor.lge.usb.moisture_en=*
+    write /sys/class/dual_role_usb/otg_default/moisture_en ${persist.vendor.lge.usb.moisture_en}
+    write /sys/devices/platform/lge-unified-nodes/typec_moisture_en ${persist.vendor.lge.usb.moisture_en}
+
+on property:persist.vendor.lge.usb.moisture_ux=*
+    write /sys/class/dual_role_usb/otg_default/moisture_ux ${persist.vendor.lge.usb.moisture_ux}
+
+# boot
+on property:sys.usb.config=boot,adb && property:sys.usb.ffs.ready=0
+    start adbd
+
+# charging
+on property:sys.usb.config=charging && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6300
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions charging
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=charging,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6300
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions charging
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+# midi
+on property:sys.usb.config=midi && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6348
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions midi
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=midi,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6349
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions midi,adb
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# hset
+on property:sys.usb.config=hset && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1A0A
+    write /sys/class/android_usb/android0/idProduct 0104
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# mausb
+service vendor.mausbueventd /vendor/bin/mausbueventd
+    disabled
+    oneshot
+
+service vendor.mausb_bind /vendor/bin/mausb bind --busid=1-1
+    disabled
+    oneshot
+
+service vendor.mausb_unbind /vendor/bin/mausb unbind --busid=1-1
+    disabled
+    oneshot
+
+service vendor.mausbd /vendor/bin/mausbd
+    disabled
+    oneshot
+
+service vendor.upnp_server /vendor/bin/upnp-server
+    disabled
+    oneshot
+
+service vendor.stop_upnp /system/bin/pkill upnp-server
+    disabled
+    oneshot
+
+service vendor.stop_mausbd /system/bin/pkill mausbd
+    disabled
+    oneshot
+
+on property:persist.vendor.lge.mausb.enable=1
+    start vendor.mausbueventd
+
+## LAO USB changes
+# adb
+on property:sys.usb.config=adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 631F
+    write /sys/class/android_usb/android0/bDeviceClass 0
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# boot
+on property:sys.usb.config=boot && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=boot,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# charge_only
+on property:sys.usb.config=charge_only && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=charge_only,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# mtp
+on property:sys.usb.config=mtp && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# ptp
+on property:sys.usb.config=ptp && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=ptp,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# rndis
+on property:sys.usb.config=rndis && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=rndis,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# cdrom_storage
+on property:sys.usb.config=cdrom_storage && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=cdrom_storage,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    exec u:r:lge-usb-sh:s0 -- /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# ncm
+on property:sys.usb.config=ncm && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 635B
+    write /sys/class/android_usb/android0/bDeviceClass 2
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions ncm
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=ncm,adb && property:sys.usb.configfs=0
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 635B
+    write /sys/class/android_usb/android0/bDeviceClass 2
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/functions ncm
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+## Verizon USB changes
+on post-fs-data && property:ro.vendor.lge.build.target_operator=VZW
+    chown system system /sys/class/android_usb/android0/f_cdrom_storage/lun/cdrom_usbmode
+    chmod 0660 /sys/class/android_usb/android0/f_cdrom_storage/lun/cdrom_usbmode
+    write /sys/class/android_usb/android0/f_cdrom_storage/lun/file /vendor/etc/usbautorun.iso
+
+service vendor.eut-init-service /vendor/bin/eut_init
+    class core
+    user root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1 && property:ro.vendor.lge.build.target_operator=VZW
+    start vendor.eut-init-service
+
+## Factory USB changes
+on boot && property:ro.bootmode=qem_56k
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+    setprop sys.usb.configfs 2
+    setprop sys.usb.config factory
+
+on boot && property:ro.bootmode=qem_130k
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+    setprop sys.usb.configfs 2
+    setprop sys.usb.config factory2
+
+on boot && property:ro.bootmode=qem_910k
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+    setprop sys.usb.configfs 2
+    setprop sys.usb.config factory
+
+on boot && property:ro.bootmode=pif_56k
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+    setprop sys.usb.configfs 2
+    setprop sys.usb.config factory
+
+on boot && property:ro.bootmode=pif_130k
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+    setprop sys.usb.configfs 2
+    setprop sys.usb.config factory2
+
+on boot && property:ro.bootmode=pif_910k
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+    setprop sys.usb.configfs 2
+    setprop sys.usb.config factory
+
+# factory
+on property:sys.usb.config=factory && property:sys.usb.configfs=0
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+
+on property:sys.usb.config=factory && property:vendor.lge.usb.configfs=0
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6000
+    write /sys/class/android_usb/android0/bDeviceClass 2
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/f_acm/acm_transports tty
+    write /sys/class/android_usb/android0/f_diag/clients diag
+    write /sys/class/android_usb/android0/functions acm,diag
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+# factory2
+on property:sys.usb.config=factory2 && property:sys.usb.configfs=0
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+
+on property:sys.usb.config=factory2 && property:vendor.lge.usb.configfs=0 && property:ro.vendor.lge.usb.diag_count=1
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6000
+    write /sys/class/android_usb/android0/bDeviceClass 2
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/f_acm/acm_transports tty
+    write /sys/class/android_usb/android0/f_diag/clients diag
+    write /sys/class/android_usb/android0/functions acm,diag
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=factory2 && property:vendor.lge.usb.configfs=0 && property:ro.vendor.lge.usb.diag_count=2
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6000
+    write /sys/class/android_usb/android0/bDeviceClass 2
+    write /sys/class/android_usb/android0/bDeviceSubClass 0
+    write /sys/class/android_usb/android0/bDeviceProtocol 0
+    write /sys/class/android_usb/android0/f_acm/acm_transports tty
+    write /sys/class/android_usb/android0/f_diag/clients diag,diag_mdm
+    write /sys/class/android_usb/android0/functions acm,diag
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+# factory,adb
+on property:sys.usb.config=factory,adb && property:sys.usb.configfs=0
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+
+on property:sys.usb.config=factory,adb && property:vendor.lge.usb.configfs=0 && property:ro.vendor.lge.usb.diag_count=1
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 633A
+    write /sys/class/android_usb/android0/bDeviceClass 239
+    write /sys/class/android_usb/android0/bDeviceSubClass 2
+    write /sys/class/android_usb/android0/bDeviceProtocol 1
+    write /sys/class/android_usb/android0/f_acm/acm_transports tty
+    write /sys/class/android_usb/android0/f_diag/clients diag
+    write /sys/class/android_usb/android0/functions acm,diag,adb
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=factory,adb && property:vendor.lge.usb.configfs=0 && property:ro.vendor.lge.usb.diag_count=2
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 634A
+    write /sys/class/android_usb/android0/bDeviceClass 239
+    write /sys/class/android_usb/android0/bDeviceSubClass 2
+    write /sys/class/android_usb/android0/bDeviceProtocol 1
+    write /sys/class/android_usb/android0/f_acm/acm_transports tty
+    write /sys/class/android_usb/android0/f_diag/clients diag,diag_mdm
+    write /sys/class/android_usb/android0/functions acm,diag,adb
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+## LGE USB ConfigFS
+# none
+on property:sys.usb.config=none && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+
+# adb
+on property:sys.usb.config=adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x631F
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+# accessory & audiosource
+on property:sys.usb.config=accessory && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x2d00
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+on property:sys.usb.config=accessory,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x2d01
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+on property:sys.usb.config=audio_source && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x2d02
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+on property:sys.usb.config=audio_source,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x2d03
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+on property:sys.usb.config=accessory,audio_source && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x2d04
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+on property:sys.usb.config=accessory,audio_source,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x2d05
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+# midi
+on property:sys.usb.config=midi && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x6348
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x6349
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+
+# hset
+on property:sys.usb.config=hset && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=hset && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "hset"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1A0A
+    write /config/usb_gadget/g1/idProduct 0x0104
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+## LGE USB ConfigFS (LAO)
+# boot
+on property:sys.usb.config=boot && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "boot"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=boot,adb && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=boot,adb && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "boot_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# charge_only
+on property:sys.usb.config=charge_only && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "charge"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=charge_only && property:sys.usb.configfs=1 && property:vendor.usb.use_ffs_mtp=1 && property:sys.boot_completed=1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+
+on property:sys.usb.config=charge_only,adb && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=charge_only,adb && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "charge_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# mtp
+on property:sys.usb.config=mtp && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+
+# ptp
+on property:sys.usb.config=ptp && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+
+on property:sys.usb.config=ptp,adb && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.config=ptp,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+
+# rndis
+on property:vendor.usb.tethering=true
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus ${vendor.usb.rps_mask}
+
+on property:sys.usb.config=rndis && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "rndis_acm_diag"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+
+on property:sys.usb.config=rndis,adb && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=rndis,adb && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "rndis_acm_diag_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+
+# cdrom_storage
+on property:sys.usb.config=cdrom_storage && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=cdrom_storage,adb && property:sys.usb.configfs=1
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2a
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    exec /vendor/bin/init.lge.usb.lao.sh ${sys.usb.config}
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# ncm
+on property:sys.usb.config=ncm && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "ncm"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x635B
+    write /config/usb_gadget/g1/bDeviceClass 2
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/ncm.0 /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=ncm,adb && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "ncm_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x635B
+    write /config/usb_gadget/g1/bDeviceClass 2
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/ncm.0 /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# adpl
+on property:sys.usb.config=adpl && property:sys.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adpl"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x634B
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.rmnet.inst.name} /config/usb_gadget/g1/configs/b.1/f3
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.dpl.inst.name} /config/usb_gadget/g1/configs/b.1/f4
+    symlink /config/usb_gadget/g1/functions/qdss.${vendor.usb.qdss.inst.name} /config/usb_gadget/g1/configs/b.1/f5
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop persist.sys.usb.config ${sys.usb.config}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=adpl && property:sys.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=2
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adpl2"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x634C
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag_mdm /config/usb_gadget/g1/configs/b.1/f3
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.rmnet.inst.name} /config/usb_gadget/g1/configs/b.1/f4
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.dpl.inst.name} /config/usb_gadget/g1/configs/b.1/f5
+    symlink /config/usb_gadget/g1/functions/qdss.${vendor.usb.qdss.inst.name} /config/usb_gadget/g1/configs/b.1/f6
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop persist.sys.usb.config ${sys.usb.config}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=adpl,adb && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adpl,adb && property:sys.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adpl_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x634B
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.rmnet.inst.name} /config/usb_gadget/g1/configs/b.1/f3
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.dpl.inst.name} /config/usb_gadget/g1/configs/b.1/f4
+    symlink /config/usb_gadget/g1/functions/qdss.${vendor.usb.qdss.inst.name} /config/usb_gadget/g1/configs/b.1/f5
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f6
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop persist.sys.usb.config ${sys.usb.config}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adpl,adb && property:sys.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=2
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adpl2_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x634C
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag_mdm /config/usb_gadget/g1/configs/b.1/f3
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.rmnet.inst.name} /config/usb_gadget/g1/configs/b.1/f4
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.rmnet.func.name}.${vendor.usb.dpl.inst.name} /config/usb_gadget/g1/configs/b.1/f5
+    symlink /config/usb_gadget/g1/functions/qdss.${vendor.usb.qdss.inst.name} /config/usb_gadget/g1/configs/b.1/f6
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f7
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop persist.sys.usb.config ${sys.usb.config}
+    setprop sys.usb.state ${sys.usb.config}
+
+## LGE USB ConfigFS (Verizon)
+on property:sys.boot_completed=1 && property:ro.vendor.lge.build.target_operator=VZW
+    write /config/usb_gadget/g1/functions/mass_storage.0/lun.0/cdrom 1
+    write /config/usb_gadget/g1/functions/mass_storage.0/lun.0/file /vendor/etc/usbautorun.iso
+
+## LGE USB ConfigFS (Factory)
+on property:vendor.usb.configfs=1 && property:sys.usb.configfs=2 && property:vendor.lge.usb.configfs=0
+    setprop vendor.lge.usb.configfs 1
+
+# factory
+on property:sys.usb.config=factory && property:sys.usb.configfs=1
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+
+on property:sys.usb.config=factory && property:vendor.lge.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "factory"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x6000
+    write /config/usb_gadget/g1/bDeviceClass 2
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# factory2
+on property:sys.usb.config=factory2 && property:sys.usb.configfs=1
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+
+on property:sys.usb.config=factory2 && property:vendor.lge.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "factory2"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x6000
+    write /config/usb_gadget/g1/bDeviceClass 2
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=factory2 && property:vendor.lge.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=2
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "factory2"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x6000
+    write /config/usb_gadget/g1/bDeviceClass 2
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag_mdm /config/usb_gadget/g1/configs/b.1/f3
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# factory,adb
+on property:sys.usb.config=factory,adb && property:sys.usb.configfs=1
+    setprop vendor.lge.usb.configfs ${sys.usb.configfs}
+
+on property:sys.usb.config=factory,adb && property:vendor.lge.usb.configfs=1
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=factory,adb && property:vendor.lge.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "factory_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x633A
+    write /config/usb_gadget/g1/bDeviceClass 239
+    write /config/usb_gadget/g1/bDeviceSubClass 2
+    write /config/usb_gadget/g1/bDeviceProtocol 1
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f3
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=factory,adb && property:vendor.lge.usb.configfs=1 && property:ro.vendor.lge.usb.diag_count=2
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "factory_adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    rm /config/usb_gadget/g1/configs/b.1/f9
+    rm /config/usb_gadget/g1/configs/b.2/f1
+    rm /config/usb_gadget/g1/configs/b.2/f2
+    rm /config/usb_gadget/g1/configs/b.2/f3
+    rm /config/usb_gadget/g1/configs/b.2/f4
+    rm /config/usb_gadget/g1/configs/b.2/f5
+    rmdir /config/usb_gadget/g1/configs/b.2
+    write /config/usb_gadget/g1/idVendor 0x1004
+    write /config/usb_gadget/g1/idProduct 0x634A
+    write /config/usb_gadget/g1/bDeviceClass 239
+    write /config/usb_gadget/g1/bDeviceSubClass 2
+    write /config/usb_gadget/g1/bDeviceProtocol 1
+    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/${vendor.usb.diag.func.name}.diag_mdm /config/usb_gadget/g1/configs/b.1/f3
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f4
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}

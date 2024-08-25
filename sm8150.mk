@@ -434,16 +434,7 @@ PRODUCT_PACKAGES += \
     init.qti.dcvs.sh \
 
 PRODUCT_PACKAGES += \
-    init.lge.display.rc \
-    init.lge.fingerprints.rc \
-    init.lge.power.rc \
-    init.lge.sensors.rc \
-    init.lge.usb.configfs.rc \
-    init.lge.usb.rc \
-    init.lge.vendor.on_boot.rc \
-    init.lge.vendor.on_post_fs_data.rc \
-    init.lge.vendor.on_post_fs.rc \
-    init.lge.vendor.wmc.drv.rc \
+    init.lge.rc \
     init.msmnile.rc \
     init.qcom.power.rc \
     init.qcom.rc \
