@@ -435,7 +435,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     init.lge.rc \
-    init.msmnile.rc \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
