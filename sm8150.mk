@@ -440,7 +440,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     init.time_daemon.rc \
-    init.vendor.sensors.rc \
     ueventd.qcom.rc
 
 # Sensors
