@@ -15,3 +15,6 @@ allow vendor_init sec_block_device:blk_file r_file_perms;
 allow vendor_init proc_swappiness:file w_file_perms;
 
 allow vendor_init debugfs:file w_file_perms;
+
+# Energy Aware
+allow vendor_init proc_sched:file w_file_perms;
