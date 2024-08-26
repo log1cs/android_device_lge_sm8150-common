@@ -63,6 +63,9 @@ function blob_fixup() {
         vendor/etc/init/vendor.sensors.sscrpcd.rc)
             sed -i 's|class early_hal|class core|g' "${2}"
             ;;
+        vendor/etc/msm_irqbalance.conf)
+            sed -i "s/IGNORED_IRQ=19,21,39$/&,115,332/" "${2}"
+            ;;
     esac
 }
 
