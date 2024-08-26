@@ -667,9 +667,6 @@ on post-fs
     # Qfuse
     write /sys/devices/platform/lge-qfprom/sec_read 0
 
-    # Use secure boot
-    verity_update_state
-
     # Roaming
     mkdir /mnt/vendor/persist-lg/roaming 0771 system radio
 
