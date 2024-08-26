@@ -111,6 +111,22 @@ on post-fs-data
     mkdir /data/vendor/nnhal 0700 system system
 
 on early-boot
+    write /sys/kernel/boot_slpi/boot 1
+
+    # Sensors
+    chown system system /mnt/vendor/persist/sensors
+    chown system system /mnt/vendor/persist/sensors/sns.reg
+    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
+    chown system system /mnt/vendor/persist/sensors/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
+    chown system system /mnt/vendor/persist/sensors/sensors_settings
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
+    chown system system /mnt/vendor/persist/sensors/registry/config
+    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
+    chown system system /sys/kernel/boot_adsp/ssr
+
     start vendor.sensors
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
@@ -224,3 +240,9 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     user system
     group system
     disabled
+
+# Sensors
+on post-fs-data && property:ro.build.type=userdebug
+    # Sensors log dir
+    mkdir /data/vendor/sensors 0777 system system
+    mkdir /data/vendor/sensors/scripts 0777 system system
