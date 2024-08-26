@@ -176,14 +176,6 @@ on property:vendor.usb.controller=*
 on property:vold.decrypt=trigger_load_persist_props && property:ro.boot.vendor.lge.forced_log=enable
     setprop ro.vendor.lge.forced_log enable
 
-on property:ro.vendor.lge.forced_log=enable
-    setprop persist.vendor.lge.service.crash.enable 1
-    setprop persist.vendor.lge.service.kernel.enable 5
-    setprop persist.vendor.lge.service.main.enable 5
-    setprop persist.vendor.lge.service.system.enable 5
-    setprop persist.vendor.lge.service.radio.enable 5
-    setprop persist.vendor.lge.service.events.enable 5
-
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
