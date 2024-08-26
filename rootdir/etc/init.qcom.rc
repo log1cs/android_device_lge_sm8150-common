@@ -85,8 +85,6 @@ on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chown system system /sys/kernel/boot_slpi/ssr
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt /dev/ttyHS0
-    chmod 0660 /dev/ttyHS0
 
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
