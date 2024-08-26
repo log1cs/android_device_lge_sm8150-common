@@ -478,9 +478,6 @@ on post-fs-data
     # MM proxy
     mkdir /vendor/persist-lg/mmoprt 0771 system system
 
-    # NTCode listing
-    mkdir /data/app-system 0771 system system
-
     # OTS
     mkdir /data/vendor/ots 0775 system system
 
