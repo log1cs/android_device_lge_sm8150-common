@@ -438,6 +438,11 @@ PRODUCT_PACKAGES += \
     init.time_daemon.rc \
     ueventd.qcom.rc
 
+PRODUCT_PACKAGES += \
+    e2fsck_ramdisk \
+    tune2fs_ramdisk \
+    resize2fs_ramdisk
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
