@@ -425,7 +425,6 @@ PRODUCT_PACKAGES += \
     init.lge.usb.default.sh \
     init.lge.usb.lao.sh \
     init.lge.usb.sh \
-    init.qcom.devstart.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.sh \
