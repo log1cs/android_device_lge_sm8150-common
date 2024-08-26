@@ -84,12 +84,12 @@ vendor.lge.faceprint.use.camera=0
 persist.vendor.ctm.disallowed=1
 persist.vendor.lge.service.chg_mode=LGE,QNOVO
 persist.vendor.tb.disallowed=1
-ro.charger.enable_suspend=true
 
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.metadata.method=dm-default-key
 ro.crypto.volume.options=aes-256-xts:aes-256-cts:v2
+
 # Call deleteAllKeys if vold detects a factory reset
 ro.crypto.metadata_init_delete_all_keys.enabled=true
 
@@ -132,7 +132,6 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 vendor.gatekeeper.disable_spu=true
 
 # GPS
-persist.backup.ntpServer=0.pool.ntp.org
 persist.vendor.lge.gnss.lppe_support=11
 persist.vendor.lge.gnss.week_number=1738
 
@@ -169,7 +168,6 @@ media.stagefright.enable-player=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 media.stagefright.thumbnail.prefer_hw_codecs=true
-mm.enable.smoothstreaming=true
 
 # Netflix
 ro.netflix.bsp_rev=Q855-16947-1
@@ -187,9 +185,6 @@ vendor.power.pasr.enabled=true
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-
-# Printk
-persist.vendor.console.silent.config=1
 
 # RCS
 persist.rcs.supported=1
