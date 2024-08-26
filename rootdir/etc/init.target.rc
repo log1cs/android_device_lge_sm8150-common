@@ -29,7 +29,6 @@
 
 on early-init
     write /proc/sys/kernel/sched_boost 1
-    symlink /data/tombstones /tombstones
 
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -108,11 +107,6 @@ on post-fs
     chown root system /sys/module/lge_handle_panic/parameters/gen_wdt_bite
 
 on post-fs-data
-    mkdir /vendor/data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/vendor/nnhal 0700 system system
 
