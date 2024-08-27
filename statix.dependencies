@@ -1,10 +1,14 @@
 [
   {
-    "repository": "android_hardware_lge",
+    "repository": "android_device_lge_sm8150-kernel",
+    "target_path": "device/lge/sm8150-kernel"
+  },
+  {
+    "repository": "android_vendor_hardware_lge",
     "target_path": "vendor/hardware/lge"
   },
   {
-    "repository": "android_kernel_lge_sm8150",
-    "target_path": "kernel/lge/sm8150"
-  }
+    "repository": "proprietary_vendor_lge_sm8150-common",
+    "target_path": "vendor/lge/sm8150-common"
+  },
 ]
