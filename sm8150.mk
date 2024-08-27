@@ -10,7 +10,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-statix
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
@@ -188,7 +188,7 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Fingerprint
-ifneq ($(filter alphalm alphaplus betalm flashlm flashlmdd,$(shell echo $(TARGET_PRODUCT) | sed 's/^lineage_//')),)
+ifneq ($(filter alphalm alphaplus betalm flashlm flashlmdd,$(shell echo $(TARGET_PRODUCT) | sed 's/^statix_//')),)
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.lge
 endif
@@ -255,10 +255,6 @@ PRODUCT_PACKAGES += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lge
-
-# Livedisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.lge
 
 # Media
 PRODUCT_PACKAGES += \
@@ -374,9 +370,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
+# Platform
+PRODUCT_BOARD_PLATFORM := msmnile
+PRODUCT_USES_QCOM_HARDWARE := true
+
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
+    android.hardware.power-service.statix-libperfmgr \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -385,7 +385,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
+    hardware/statix/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client
 
 # Public libraries
@@ -474,10 +474,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     android.hardware.tetheroffload.config@1.0.vendor \
     android.hardware.tetheroffload.control@1.0.vendor
-
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.lge_sm8150
 
 # Update engine
 PRODUCT_HOST_PACKAGES += \
