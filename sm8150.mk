@@ -253,6 +253,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
 
+# Kernel
+$(call inherit-product, device/lge/sm8150-kernel/kernel.mk)
+
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lge
